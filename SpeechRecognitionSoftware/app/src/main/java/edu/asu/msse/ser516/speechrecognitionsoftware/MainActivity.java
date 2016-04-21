@@ -1,6 +1,7 @@
 package edu.asu.msse.ser516.speechrecognitionsoftware;
 
 import android.app.Dialog;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             matches_text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             String xyz;
             xyz = matches_text.toString();
+            Log.w("matched text: " , xyz);
             if(xyz.contains("maps")){
 
                 Toast.makeText(getApplicationContext(), "I am sexy and I know it :P", Toast.LENGTH_SHORT).show();
@@ -67,6 +69,26 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
+            if (xyz.contains("phone")) {
+                Toast.makeText(getApplicationContext(), "I am sexy and I know it :P", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:0123456789"));
+                startActivity(intent);
+            }
+            if (xyz.toLowerCase().contains("bluetooth on")) {
+                Toast.makeText(getApplicationContext(), "Turned Bluetooth On", Toast.LENGTH_SHORT).show();
+                BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                if (mBluetoothAdapter.isEnabled()) {
+                    mBluetoothAdapter.disable();
+                }
+            }
+            /*if (xyz.contains("bluetooth")) {
+                Toast.makeText(getApplicationContext(), "Turned Bluetooth Off", Toast.LENGTH_SHORT).show();
+                BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                if (!mBluetoothAdapter.isEnabled()) {
+                    mBluetoothAdapter.enable();
+                }
+            }*/
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
