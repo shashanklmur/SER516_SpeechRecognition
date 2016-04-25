@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             String xyz;
             xyz = matches_text.toString();
             Log.w("matched text: " , xyz);
-            if(xyz.contains("maps")){
+            if(xyz.contains("music")){
 
                 Toast.makeText(getApplicationContext(), "I am sexy and I know it :P", Toast.LENGTH_SHORT).show();
                 Uri uri = Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345");
