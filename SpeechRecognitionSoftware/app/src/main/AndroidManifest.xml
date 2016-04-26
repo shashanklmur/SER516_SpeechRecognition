@@ -34,6 +34,8 @@
             android:name=".IconActivity"
             android:label="@string/title_activity_icon"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+		
+		<activity android:name=".STT" />
     </application>
 
 </manifest>

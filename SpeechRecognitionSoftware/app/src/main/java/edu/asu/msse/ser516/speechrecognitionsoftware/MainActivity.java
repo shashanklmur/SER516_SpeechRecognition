@@ -114,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(this, IconActivity.class);
                 startActivity(i);
             }
+			if(inputVoiceData.toLowerCase().contains("type for me")) {
+                Intent i = new Intent(this, STT.class);
+                startActivity(i);
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
