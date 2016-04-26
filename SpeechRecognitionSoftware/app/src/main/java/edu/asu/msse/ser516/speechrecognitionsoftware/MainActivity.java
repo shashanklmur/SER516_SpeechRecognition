@@ -118,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(this, STT.class);
                 startActivity(i);
             }
+			public void onClickSTT(View v) {
+				Intent i = new Intent(this, STT.class);
+				startActivity(i);
+    }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

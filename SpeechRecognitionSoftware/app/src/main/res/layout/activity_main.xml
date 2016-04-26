@@ -30,7 +30,16 @@
         android:src="@drawable/bluetooth"
         android:layout_margin="10dp"/>
 
-    <ImageView
+		<ImageView
+        android:id="@+id/imageSTT"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:onClick="onClickSTT"
+        android:layout_toRightOf="@id/imageBluetooth"
+        android:src="@drawable/voice_to_text"
+        android:layout_margin="30dp"/>
+		
+		<ImageView
         android:id="@+id/imageIcon"
         android:layout_width="65dp"
         android:layout_height="65dp"
