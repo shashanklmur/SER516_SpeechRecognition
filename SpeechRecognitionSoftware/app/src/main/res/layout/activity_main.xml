@@ -8,15 +8,70 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.asu.msse.ser516.speechrecognitionsoftware.MainActivity"
-    android:background="@drawable/mainctivity">
+    >
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Launch Voice Recognition"
         android:id="@+id/button"
+        android:onClick="launchVoiceRecognition"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="110dp"
-        android:onClick="launchVoiceRecognition"/>
+        android:background="@drawable/voice"/>
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/imageBluetooth"
+        android:src="@drawable/bluetooth"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/imageMaps"
+        android:src="@drawable/maps"
+        android:layout_alignTop="@+id/imageBluetooth"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/imagePhone"
+        android:src="@drawable/phone"
+        android:layout_below="@+id/imageBluetooth"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/imageMessage"
+        android:src="@drawable/message"
+        android:layout_below="@+id/imageMaps"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/imageSettings"
+        android:src="@drawable/settings"
+        android:layout_below="@+id/imagePhone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/imageMusic"
+        android:src="@drawable/music"
+        android:layout_below="@+id/imageMessage"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
 </RelativeLayout>

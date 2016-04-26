@@ -16,7 +16,6 @@ public class SplashScreen extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (!splashLoaded) {
             setContentView(R.layout.activity_splash_screen);
             int secondsDelayed = 1;
@@ -36,5 +35,4 @@ public class SplashScreen extends Activity {
             finish();
         }
     }
-
 }
