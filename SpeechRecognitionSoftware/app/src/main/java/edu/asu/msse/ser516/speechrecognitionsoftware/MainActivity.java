@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void launchVoiceRecognition(View v) {
@@ -58,42 +60,42 @@ public class MainActivity extends AppCompatActivity {
             String inputVoiceData;
             inputVoiceData = inputVoiceCommand.toString();
             Log.w("matched text: " , inputVoiceData);
-            if(inputVoiceData.contains("maps")){
+            if(inputVoiceData.toLowerCase().contains("maps")){
                 Toast.makeText(getApplicationContext(), "maps", Toast.LENGTH_SHORT).show();
                 Uri uri = Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
-            if (inputVoiceData.contains("emergency call")) {
+            if (inputVoiceData.toLowerCase().contains("emergency call")) {
                 Toast.makeText(getApplicationContext(), "I am sexy and I know it :P", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel: 911"));
                 startActivity(intent);
             }
-            if (inputVoiceData.contains("bluetooth on")) {
+            if (inputVoiceData.toLowerCase().contains("bluetooth on")) {
                 Toast.makeText(getApplicationContext(), "Turned Bluetooth On", Toast.LENGTH_SHORT).show();
                 BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
                 if (!mBluetoothAdapter.isEnabled()) {
                     mBluetoothAdapter.enable();
                 }
             }
-            if (inputVoiceData.contains("bluetooth off")) {
+            if (inputVoiceData.toLowerCase().contains("bluetooth off")) {
                 Toast.makeText(getApplicationContext(), "Turned Bluetooth Off", Toast.LENGTH_SHORT).show();
                 BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
                 if (mBluetoothAdapter.isEnabled()) {
                     mBluetoothAdapter.enable();
                 }
             }
-            if (inputVoiceData.contains("music on")) {
+            if (inputVoiceData.toLowerCase().contains("music on")) {
                 Intent i = new Intent(this, MusicActivity.class);
                 startActivity(i);
             }
-            if (inputVoiceData.contains("settings")) {
+            if (inputVoiceData.toLowerCase().contains("settings")) {
                 Intent intent = new Intent(android.provider.Settings.ACTION_SETTINGS);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
-            if (inputVoiceData.contains("message")) {
+            if (inputVoiceData.toLowerCase().contains("message")) {
                 Intent smsIntent = new Intent(Intent.ACTION_VIEW);
                 smsIntent.setType("vnd.android-dir/mms-sms");
                 smsIntent.putExtra("address", "12125551212");
@@ -101,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(smsIntent);
             }if (inputVoiceData.contains("meeting")) {
                 Intent i = new Intent(this, Meetings.class);
+                startActivity(i);
+            }
+            if (inputVoiceData.toLowerCase().contains("set icon size")) {
+                Intent i = new Intent(this, IconActivity.class);
                 startActivity(i);
             }
         }

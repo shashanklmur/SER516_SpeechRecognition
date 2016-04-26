@@ -29,6 +29,10 @@
         <activity
             android:name=".Meetings"
             android:label="@string/title_activity_meetings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".IconActivity"
+            android:label="@string/title_activity_icon"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
