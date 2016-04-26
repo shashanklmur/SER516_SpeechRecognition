@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(this, IncreateSize.class);
                 startActivity(i);
             }
-            if (inputVoiceData.toLowerCase().contains("set icon size")) {
+            if (inputVoiceData.toLowerCase().contains("icons")) {
                 Intent i = new Intent(this, IconActivity.class);
                 startActivity(i);
             }
@@ -162,6 +162,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(smsIntent);
     }
 
+    public void onClickIcon(View v){
+        Intent i = new Intent(this, IconActivity.class);
+        startActivity(i);
+    }
     public void onClickIcreateSize(View v) {
         Intent i = new Intent(this, IncreateSize.class);
         startActivity(i);

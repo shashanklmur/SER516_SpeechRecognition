@@ -31,6 +31,15 @@
         android:layout_margin="10dp"/>
 
     <ImageView
+        android:id="@+id/imageIcon"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_centerInParent="true"
+        android:onClick="onClickIcon"
+        android:src="@drawable/mdpi"
+        android:layout_margin="10dp"/>
+
+    <ImageView
         android:id="@+id/imageMaps"
         android:layout_width="75dp"
         android:layout_height="75dp"
