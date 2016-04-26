@@ -21,9 +21,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private final int REQUEST_CODE =1;
-    Dialog match_text_dialog;
-    ListView textlist;
-    ArrayList<String> matches_text;
+    ArrayList<String> inputVoiceCommand;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchVoiceRecognition(View v) {
-        Log.w("Here", "ad");
-
         if(isConnected()) {
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
@@ -40,12 +37,11 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(intent, REQUEST_CODE);
         }
         else{
-            Toast.makeText(getApplicationContext(), "Plese Connect to Internet", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Please Connect to Internet", Toast.LENGTH_LONG).show();
         }
     }
 
-    public  boolean isConnected()
-    {
+    public  boolean isConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo net = cm.getActiveNetworkInfo();
         if (net!=null && net.isAvailable() && net.isConnected()) {
@@ -58,37 +54,55 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-            matches_text = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            String xyz;
-            xyz = matches_text.toString();
-            Log.w("matched text: " , xyz);
-            if(xyz.contains("music")){
-
-                Toast.makeText(getApplicationContext(), "I am sexy and I know it :P", Toast.LENGTH_SHORT).show();
+            inputVoiceCommand = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            String inputVoiceData;
+            inputVoiceData = inputVoiceCommand.toString();
+            Log.w("matched text: " , inputVoiceData);
+            if(inputVoiceData.contains("maps")){
+                Toast.makeText(getApplicationContext(), "maps", Toast.LENGTH_SHORT).show();
                 Uri uri = Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
-            if (xyz.contains("phone")) {
+            if (inputVoiceData.contains("emergency call")) {
                 Toast.makeText(getApplicationContext(), "I am sexy and I know it :P", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:0123456789"));
+                intent.setData(Uri.parse("tel: 911"));
                 startActivity(intent);
             }
-            if (xyz.toLowerCase().contains("bluetooth on")) {
+            if (inputVoiceData.contains("bluetooth on")) {
                 Toast.makeText(getApplicationContext(), "Turned Bluetooth On", Toast.LENGTH_SHORT).show();
-                BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-                if (mBluetoothAdapter.isEnabled()) {
-                    mBluetoothAdapter.disable();
-                }
-            }
-            /*if (xyz.contains("bluetooth")) {
-                Toast.makeText(getApplicationContext(), "Turned Bluetooth Off", Toast.LENGTH_SHORT).show();
                 BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
                 if (!mBluetoothAdapter.isEnabled()) {
                     mBluetoothAdapter.enable();
                 }
-            }*/
+            }
+            if (inputVoiceData.contains("bluetooth off")) {
+                Toast.makeText(getApplicationContext(), "Turned Bluetooth Off", Toast.LENGTH_SHORT).show();
+                BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                if (mBluetoothAdapter.isEnabled()) {
+                    mBluetoothAdapter.enable();
+                }
+            }
+            if (inputVoiceData.contains("music on")) {
+                Intent i = new Intent(this, MusicActivity.class);
+                startActivity(i);
+            }
+            if (inputVoiceData.contains("settings")) {
+                Intent intent = new Intent(android.provider.Settings.ACTION_SETTINGS);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+            if (inputVoiceData.contains("message")) {
+                Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+                smsIntent.setType("vnd.android-dir/mms-sms");
+                smsIntent.putExtra("address", "12125551212");
+                smsIntent.putExtra("sms_body", "Body of Message");
+                startActivity(smsIntent);
+            }if (inputVoiceData.contains("meeting")) {
+                Intent i = new Intent(this, Meetings.class);
+                startActivity(i);
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

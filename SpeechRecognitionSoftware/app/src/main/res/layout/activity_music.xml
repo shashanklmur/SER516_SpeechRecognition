@@ -7,14 +7,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.asu.msse.ser516.speechrecognitionsoftware.MainActivity"
-    android:background="@drawable/mainctivity">
-
+    tools:context="edu.asu.msse.ser516.speechrecognitionsoftware.MusicActivity">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Launch Voice Recognition"
-        android:id="@+id/button"
+        android:id="@+id/button1"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="110dp"
