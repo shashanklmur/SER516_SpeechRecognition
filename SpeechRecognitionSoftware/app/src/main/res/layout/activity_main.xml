@@ -7,71 +7,76 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.asu.msse.ser516.speechrecognitionsoftware.MainActivity"
-    >
+    tools:context="edu.asu.msse.ser516.speechrecognitionsoftware.MainActivity">
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:onClick="launchVoiceRecognition"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/voice"/>
+        android:background="@drawable/voice"
+        android:onClick="launchVoiceRecognition" />
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
         android:id="@+id/imageBluetooth"
-        android:src="@drawable/bluetooth"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:src="@drawable/bluetooth" />
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
         android:id="@+id/imageMaps"
-        android:src="@drawable/maps"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/imageBluetooth"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:src="@drawable/maps" />
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
         android:id="@+id/imagePhone"
-        android:src="@drawable/phone"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/imageBluetooth"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:src="@drawable/phone" />
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
         android:id="@+id/imageMessage"
-        android:src="@drawable/message"
-        android:layout_below="@+id/imageMaps"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/imageMaps"
+        android:src="@drawable/message" />
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
         android:id="@+id/imageSettings"
-        android:src="@drawable/settings"
-        android:layout_below="@+id/imagePhone"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imagePhone"
+        android:src="@drawable/settings" />
+
+    <ImageView
+        android:id="@+id/imageMusic"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+<<<<<<< Updated upstream
         android:id="@+id/imageMusic"
         android:src="@drawable/music_bg"
         android:layout_below="@+id/imageMessage"
+=======
+        android:layout_alignParentEnd="true"
+>>>>>>> Stashed changes
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/imageMessage"
+        android:src="@drawable/music" />
 
 
 </RelativeLayout>
