@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private final int REQUEST_CODE =1;
+    private final int REQUEST_CODE = 1;
     ArrayList<String> inputVoiceCommand;
 
     @Override
@@ -32,21 +32,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchVoiceRecognition(View v) {
-        if(isConnected()) {
+        if (isConnected()) {
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                     RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
             startActivityForResult(intent, REQUEST_CODE);
-        }
-        else{
+        } else {
             Toast.makeText(getApplicationContext(), "Please Connect to Internet", Toast.LENGTH_LONG).show();
         }
     }
 
-    public  boolean isConnected() {
+    public boolean isConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo net = cm.getActiveNetworkInfo();
-        if (net!=null && net.isAvailable() && net.isConnected()) {
+        if (net != null && net.isAvailable() && net.isConnected()) {
             return true;
         } else {
             return false;
@@ -59,15 +58,15 @@ public class MainActivity extends AppCompatActivity {
             inputVoiceCommand = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             String inputVoiceData;
             inputVoiceData = inputVoiceCommand.toString();
-            Log.w("matched text: " , inputVoiceData);
-            if(inputVoiceData.toLowerCase().contains("maps")){
+            Log.w("matched text: ", inputVoiceData);
+            if (inputVoiceData.toLowerCase().contains("maps")) {
                 Toast.makeText(getApplicationContext(), "maps", Toast.LENGTH_SHORT).show();
                 Uri uri = Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
             if (inputVoiceData.toLowerCase().contains("emergency call")) {
-                Toast.makeText(getApplicationContext(), "I am sexy and I know it :P", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Emergency call", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel: 911"));
                 startActivity(intent);
@@ -101,8 +100,13 @@ public class MainActivity extends AppCompatActivity {
                 smsIntent.putExtra("address", "12125551212");
                 smsIntent.putExtra("sms_body", "Body of Message");
                 startActivity(smsIntent);
-            }if (inputVoiceData.contains("meeting")) {
+            }
+            if (inputVoiceData.toLowerCase().contains("meeting")) {
                 Intent i = new Intent(this, Meetings.class);
+                startActivity(i);
+            }
+            if (inputVoiceData.toLowerCase().contains("font")) {
+                Intent i = new Intent(this, IncreateSize.class);
                 startActivity(i);
             }
             if (inputVoiceData.toLowerCase().contains("set icon size")) {
@@ -111,5 +115,59 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void onClickBluetooth(View v) {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter.isEnabled()) {
+            Toast.makeText(getApplicationContext(), "Turned Bluetooth Off", Toast.LENGTH_SHORT).show();
+            mBluetoothAdapter.disable();
+        } else {
+            Toast.makeText(getApplicationContext(), "Turned Bluetooth On", Toast.LENGTH_SHORT).show();
+            mBluetoothAdapter.enable();
+        }
+    }
+
+    public void onClickSettings(View v) {
+        Intent intent = new Intent(android.provider.Settings.ACTION_SETTINGS);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+
+    }
+
+    public void onClickPhone(View v) {
+        Toast.makeText(getApplicationContext(), "Emergency call", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel: 911"));
+        startActivity(intent);
+    }
+
+    public void onClickMaps(View v) {
+        Toast.makeText(getApplicationContext(), "maps", Toast.LENGTH_SHORT).show();
+        Uri uri = Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
+    public void onClickMusic(View v) {
+        Intent i = new Intent(this, MusicActivity.class);
+        startActivity(i);
+    }
+
+    public void onClickMessage(View v) {
+        Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+        smsIntent.setType("vnd.android-dir/mms-sms");
+        smsIntent.putExtra("address", "12125551212");
+        smsIntent.putExtra("sms_body", "Body of Message");
+        startActivity(smsIntent);
+    }
+
+    public void onClickIcreateSize(View v) {
+        Intent i = new Intent(this, IncreateSize.class);
+        startActivity(i);
+    }
+    public void onClickMettings(View v) {
+        Intent i = new Intent(this, Meetings.class);
+        startActivity(i);
     }
 }

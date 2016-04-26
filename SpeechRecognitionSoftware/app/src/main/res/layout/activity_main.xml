@@ -16,7 +16,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/voice"
-        android:onClick="launchVoiceRecognition" />
+        android:onClick="launchVoiceRecognition"
+        android:layout_margin="10dp"/>
 
     <ImageView
         android:id="@+id/imageBluetooth"
@@ -25,7 +26,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/bluetooth" />
+        android:onClick="onClickBluetooth"
+        android:src="@drawable/bluetooth"
+        android:layout_margin="10dp"/>
 
     <ImageView
         android:id="@+id/imageMaps"
@@ -34,7 +37,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/imageBluetooth"
-        android:src="@drawable/maps" />
+        android:onClick="onClickMaps"
+        android:src="@drawable/maps"
+        android:layout_margin="10dp"/>
 
     <ImageView
         android:id="@+id/imagePhone"
@@ -43,7 +48,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/imageBluetooth"
-        android:src="@drawable/phone" />
+        android:onClick="onClickPhone"
+        android:src="@drawable/phone"
+        android:layout_margin="10dp"/>
 
     <ImageView
         android:id="@+id/imageMessage"
@@ -52,7 +59,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/imageMaps"
-        android:src="@drawable/message" />
+        android:onClick="onClickMessage"
+        android:src="@drawable/message"
+        android:layout_margin="10dp"/>
 
     <ImageView
         android:id="@+id/imageSettings"
@@ -61,22 +70,40 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/imagePhone"
-        android:src="@drawable/settings" />
+        android:onClick="onClickSettings"
+        android:src="@drawable/settings"
+        android:layout_margin="10dp"/>
 
     <ImageView
         android:id="@+id/imageMusic"
         android:layout_width="75dp"
         android:layout_height="75dp"
-<<<<<<< Updated upstream
-        android:id="@+id/imageMusic"
-        android:src="@drawable/music_bg"
-        android:layout_below="@+id/imageMessage"
-=======
         android:layout_alignParentEnd="true"
->>>>>>> Stashed changes
         android:layout_alignParentRight="true"
         android:layout_below="@+id/imageMessage"
-        android:src="@drawable/music" />
+        android:onClick="onClickMusic"
+        android:src="@drawable/music"
+        android:layout_margin="10dp"/>
 
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/imageMeetings"
+        android:src="@drawable/meeting"
+        android:layout_below="@+id/imageSettings"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"
+        android:onClick="onClickMettings"/>
 
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/imageFont"
+        android:src="@drawable/font"
+        android:layout_alignTop="@+id/imageMeetings"
+        android:layout_alignRight="@+id/imageMusic"
+        android:layout_alignEnd="@+id/imageMusic"
+        android:layout_margin="10dp"
+        android:onClick="onClickIcreateSize"/>
 </RelativeLayout>

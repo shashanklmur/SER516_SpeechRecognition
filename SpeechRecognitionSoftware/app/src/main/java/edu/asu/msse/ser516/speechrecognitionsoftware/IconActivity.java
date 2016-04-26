@@ -61,7 +61,7 @@ public class IconActivity extends AppCompatActivity {
             if (inputVoiceData.contains("go back")) {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-            } else if (inputVoiceData.contains("increase size")) {
+            } else if (inputVoiceData.toLowerCase().contains("increase size")) {
 //                Toast.makeText(getApplicationContext(), "Playing next", Toast.LENGTH_LONG).show();
 
                     iv.setImageResource(R.drawable.music_icon);
@@ -75,7 +75,7 @@ public class IconActivity extends AppCompatActivity {
 
 
 
-            } else if (inputVoiceData.contains("decrease size")) {
+            } else if (inputVoiceData.toLowerCase().contains("decrease size")) {
 //                Toast.makeText(getApplicationContext(), "Playing previous", Toast.LENGTH_LONG).show();
                 iv.setImageResource(R.drawable.music_icon);
                 ViewGroup.LayoutParams params = iv.getLayoutParams();

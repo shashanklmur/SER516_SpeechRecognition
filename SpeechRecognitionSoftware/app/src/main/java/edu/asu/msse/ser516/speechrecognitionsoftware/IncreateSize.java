@@ -25,6 +25,7 @@ public class IncreateSize extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_increate_size);
         text = (TextView) findViewById(R.id.textView);
+        text.setText("Hello Alladdin");
     }
 
     public void launchVoiceRecognition(View v) {
@@ -57,10 +58,10 @@ public class IncreateSize extends AppCompatActivity {
             String inputVoiceData;
             inputVoiceData = inputVoiceCommand.toString();
             Log.w("matched text: ", inputVoiceData);
-            if (inputVoiceData.contains("increase")) {
+            if (inputVoiceData.toLowerCase().contains("increase")) {
                 text.setTextColor(Color.RED);
                 text.setTextSize(text.getTextSize() + 10);
-            } else if (inputVoiceData.contains("decrease")) {
+            } else if (inputVoiceData.toLowerCase().contains("decrease")) {
                 text.setTextColor(Color.GREEN);
                 text.setTextSize(text.getTextSize() - 10);
             }

@@ -56,16 +56,16 @@ public class MusicActivity extends AppCompatActivity {
             if (inputVoiceData.contains("music off")) {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
-            } else if (inputVoiceData.contains("next")) {
+            } else if (inputVoiceData.toLowerCase().contains("next")) {
                 Toast.makeText(getApplicationContext(), "Playing next", Toast.LENGTH_LONG).show();
-            } else if (inputVoiceData.contains("previous")) {
+            } else if (inputVoiceData.toLowerCase().contains("previous")) {
                 Toast.makeText(getApplicationContext(), "Playing previous", Toast.LENGTH_LONG).show();
-            } else if (inputVoiceData.contains("stop")) {
+            } else if (inputVoiceData.toLowerCase().contains("stop")) {
                 Toast.makeText(getApplicationContext(), "Music stopped", Toast.LENGTH_LONG).show();
-            } else if (inputVoiceData.contains("play")) {
+            } else if (inputVoiceData.toLowerCase().contains("play")) {
                 Toast.makeText(getApplicationContext(), "Played", Toast.LENGTH_LONG).show();
-            } else if (inputVoiceData.contains("pause")) {
-                Toast.makeText(getApplicationContext(), "Plaused", Toast.LENGTH_LONG).show();
+            } else if (inputVoiceData.toLowerCase().contains("pause")) {
+                Toast.makeText(getApplicationContext(), "Paused", Toast.LENGTH_LONG).show();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
